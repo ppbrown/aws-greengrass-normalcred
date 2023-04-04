@@ -23,6 +23,8 @@ However, locally, you will need the following programs installed:
 * aws
 * jq
 
+You will also need to have created the ggc_user and home directory
+
 
 ## High level summary:
 
@@ -35,6 +37,13 @@ have one already
 to take advantage of the Role Alias
 
 # Customization
+
+By default, the component will generate the cred file in
+
+/home/ggc_user/timestream.cred
+
+It should refresh it every 30 minutes
+
 
 To customize the roles and service this component sets up, you can either
 edit the main.sh script, or edit the recipe to change the calling arguments
