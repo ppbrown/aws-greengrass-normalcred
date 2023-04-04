@@ -1,0 +1,11 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: NAME
+ComponentVersion: VERSION
+ComponentDescription: Pull Cred file from AWS through Greengrass
+ComponentPublisher: Bolthole
+Manifests:
+  - Platform:
+      os: linux
+    Lifecycle:
+      Run: bash {artifacts:path}/main.sh
