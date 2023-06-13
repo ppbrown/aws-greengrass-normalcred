@@ -18,25 +18,29 @@ would normally run inside a component, for example...
 without having to rebuild and redeploy your actual component.
 
 
-# Requirements
+# Usage
 
-Basically, all the AWS requirements detailed in the document at
+Once you install the container, and start it up, you can choose to either use the cred file, or the environment file.
 
-https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html
-
-However, if you want to use the cred rather than the env file, 
-you will need the following programs installed:
+If you want to use the cred file rather than the env file, 
+you will need the following programs installed to parse out the values:
 
 * aws
 * jq
 
 You will also need to have created the ggc_user and home directory
 
-Alternatively, to use the environment variable method, just source the env file created in
-/home/ggc_user
+Alternatively, to use the environment variable method, just source the env file that the running container creates in
+/home/ggc_user/env_export
+
+Either way, you should then be able to use your choice of AWS code from your normal shell prompt, but using the credentials for the greengrass component
 
 
-## High level summary:
+## High level summary of AWS permissions:
+
+Basically, all the AWS requirements detailed in the document at
+
+https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html
 
 * Create a role that has access for the service you want, if you dont
 have one already
