@@ -10,6 +10,13 @@ automatic auth present inside a Component.
 Or, if for some reason, you want to run it outside of
 a Component environment, to access AWS services directly
 
+Additionally, it exports env vars you would normally see inside
+a greengrass component
+Turns out this is *really useful for debugging code*. 
+You can keep iterating over versions of a python script that
+would normally run inside a component, for example...
+without having to rebuild and redeploy your actual component.
+
 
 # Requirements
 
