@@ -22,15 +22,18 @@ without having to rebuild and redeploy your actual component.
 
 Basically, all the AWS requirements detailed in the document at
 
-
 https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html
 
-However, locally, you will need the following programs installed:
+However, if you want to use the cred rather than the env file, 
+you will need the following programs installed:
 
 * aws
 * jq
 
 You will also need to have created the ggc_user and home directory
+
+Alternatively, to use the environment variable method, just source the env file created in
+/home/ggc_user
 
 
 ## High level summary:
