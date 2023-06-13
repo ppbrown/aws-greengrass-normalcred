@@ -11,6 +11,7 @@
 
 seconds=${seconds:-1800} # 1800 seconds = 30 minutes
 credentialfile=${credentialfile:-"/home/ggc_user/timestream.cred"}
+envfile="/home/ggc_user/env_export"
 role=${role:-TimestreamAccessRoleAlias}
 region=${region:-us-west-2}
 
@@ -45,7 +46,13 @@ done
 
 shift $(($OPTIND - 1))
 
-
+function print_ggc_vars(){
+        for v in AWS_REGION \
+                AWS_CONTAINER_AUTHORIZATION_TOKEN \
+                AWS_CONTAINER_CREDENTIALS_FULL_URI ; do
+                echo export $v=$(printenv $v)
+        done
+}
 
 while true; do
 	curl --cert /greengrass/v2/thingCert.crt --key /greengrass/v2/privKey.key -H "x-amzn-iot-thingname: ${AWS_IOT_THING_NAME}" --cacert ${GG_ROOT_CA_PATH} https://${ENDPOINT}/role-aliases/${role}/credentials > ${credentialfile}.json
@@ -56,6 +63,8 @@ jq -r '"[default]",
  "aws_session_token=" + .credentials.sessionToken, 
  ""' < ${credentialfile}.json > ${credentialfile}.tmp
 	mv ${credentialfile}.tmp  ${credentialfile}
+	
+	print_ggc_vars >$envfile
 
 	echo sleeping for $seconds seconds
 	sleep $seconds
